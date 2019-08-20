@@ -8,7 +8,8 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: "[name].js"
+        filename: "[name].js",
+        globalObject: 'this'
     },
     plugins: [htmlPlugin],
     module: {
@@ -30,5 +31,11 @@ module.exports = {
                 options: { name: '/static/[name].[ext]' }
             }
         ]
+    },
+    devServer: {
+        contentBase: path.join(__dirname, 'dist/'),
+        port: 3000,
+        publicPath: 'http://localhost:3000/',
+        hotOnly: true
     }
 };
